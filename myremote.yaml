@@ -1,0 +1,28 @@
+apiVersion: gitkube.sh/v1alpha1
+kind: Remote
+metadata:
+  creationTimestamp: null
+  name: ex3
+  namespace: default
+spec:
+  authorizedKeys:
+  - |
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0faf+hidaAtEiSM6jyzlF1MIA4cOoObvXlHVkUWJtYevnptv9ieb/zb2BEgoTRKhCQnW7dBRC39h+vy4qkmXgNKIihARDcdYRlKy4/vMz+3aYjBoWmgvVisNV5Novo74dJR9PEPL0L7aubdjUfIpAaRoz3NbWph8kJLhK9P/j4d+LcnU7pMLG6ullC71FXWQj/L7tx5M3x81OVX2ybG/0S8UlQt/r1rZ62KvyXpkFfyL7QSARg6GO0JmjMoPOdLqVhXd+RVXMAGhWMVnU6jzB26qEbKJQw59X2rK8JFL7mY+fj0FagXH5qB4AIFdYuyGk4p+tvhfucoWY55bCcPIz vinay@vinay-Latitude-3480
+  deployments:
+  - containers:
+    - dockerfile: microservices/nginx/Dockerfile
+      name: app
+      path: microservices/nginx
+    name: app
+  manifests:
+    helm: {}
+    path: manifests
+  registry:
+    credentials:
+      secretKeyRef:
+        key: ""
+      secretRef: ex2-regsecret
+    url: docker.io/
+status:
+  remoteUrl: ""
+  remoteUrlDesc: ""
